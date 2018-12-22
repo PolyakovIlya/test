@@ -6,8 +6,7 @@ module.exports = {
     entry: './index.js',
     output: {
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, './dist'),
-        publicPath: "/"
+        path: path.resolve(__dirname, './dist')
     },
     plugins: [
         new HtmlWebPackPlugin({
