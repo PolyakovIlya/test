@@ -1,12 +1,27 @@
-#build project
+# Cloud tags
 
-###!make a dev build before start webpack server!
+## Installation:
 
-###for development
+```
+npm i
+```
+
+#### Notice: Make a dev build before start webpack server
+
+### Build for development
+
+```
 npm run build-dev
+```
 
-###for production
+### Build for production
+
+```
 npm run build-prod
+```
 
-###start webpack server
+### Start webpack server
+
+```
 npm start
+```
