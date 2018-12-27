@@ -1,35 +1,37 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
+import styled from 'styled-components'
 
-let style = {
-    link: {
-        position: 'relative',
-        display: 'inline-block',
-        margin: '5px',
-        textDecoration: 'none'
-    },
-    badge: {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        fontSize: '13px',
-        backgroundColor: '#e44337',
-        color: '#fff',
-        borderRadius: '50%',
-        padding: '1px 2px',
-        minWidth: '12px',
-        textAlign: 'center'
-    },
-    list: {
-        listStyle: 'none',
-        padding: '5px 10px',
-        color: '#5577cc',
-        backgroundColor: '#ececec',
-        borderRadius: '5px',
-        verticalAlign: 'middle'
-    }
-}
+const LinkBtn = styled(Link)`
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    text-decoration: none;
+`;
+
+const Badge = styled.span`
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    background-color: #e44337;
+    color: #fff;
+    border-radius: 50%;
+    padding: 1px 2px;
+    min-width: 12px;
+    text-align: center;
+`;
+
+const List = styled.li`
+    list-style: none;
+    padding: 5px 10px;
+    color: #5577cc;
+    background-color: #ececec;
+    border-radius: 5px;
+    vertical-align: middle;
+    font-size: ${props => props.size}px;
+`;
 
 class CloudItem extends Component {
     constructor(props) {
@@ -40,14 +42,12 @@ class CloudItem extends Component {
         const {id, label, sentimentScore, volume } = this.props;
 
         return(
-            <Link to={`/${id}`} style={style.link}>
-                <li style={{...style.list, fontSize: sentimentScore}}>{label}</li>
-                <span style={style.badge}>{volume}</span>
-            </Link>
+            <LinkBtn to={`/${id}`}>
+                <List size={sentimentScore}>{label}</List>
+                <Badge>{volume}</Badge>
+            </LinkBtn>
         )
     }
-
-
 }
 
 CloudItem.propTypes = {
