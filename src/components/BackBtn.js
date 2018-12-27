@@ -1,26 +1,26 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import styled from 'styled-components'
 
-const style = {
-    link: {
-        display: 'block',
-        textDecoration: 'none'
-    },
-    btn: {
-        display: 'block',
-        padding: '10px 20px',
-        backgroundColor: '#ccc',
-        borderRadius: '4px',
-        color: '#000',
-        fontSize: '14px',
-    }
-}
+const LinkBtn = styled(Link)`
+    display: block;
+    text-decoration: none;
+`;
+
+const Btn = styled.button`
+    display: block;
+    padding: 10px 20px;
+    background-color: #ccc;
+    border-radius: 4px;
+    color: #000;
+    font-size: 14px;
+`;
 
 const BackBtn = () => {
     return (
-        <Link to={`../`} style={style.link}>
-            <button style={style.btn}>{`< Back`}</button>
-        </Link>
+        <LinkBtn to={`../`}>
+            <Btn>{`< Back`}</Btn>
+        </LinkBtn>
     )
 }
 
