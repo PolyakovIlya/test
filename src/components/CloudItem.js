@@ -24,10 +24,8 @@ class CloudItem extends Component {
         super(props)
     }
 
-    calculateTagSize(score) {
+    calculateTagSize(score, max, min) {
         const tIndex = score,
-              min = 1,
-              max = 895,
               fMin = 12,
               fMax = 100;
 
@@ -35,10 +33,8 @@ class CloudItem extends Component {
     }
 
     render() {
-        const {id, label, sentimentScore } = this.props;
-        const size = this.calculateTagSize(sentimentScore)
-
-        console.log('size', size);
+        const {id, label, sentimentScore, max, min } = this.props;
+        const size = this.calculateTagSize(sentimentScore, max, min);
 
         return(
             <LinkBtn to={`/${id}`}>

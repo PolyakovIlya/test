@@ -10,9 +10,17 @@ class CloudList extends React.Component {
     renderList() {
         const {clouds} = this.props;
 
+        const arr = this.getSentimentScores(clouds);
+        const max = Math.max(...arr),
+              min = Math.min(...arr);
+
         return clouds.map((cloud) => {
-            return <CloudItem key={cloud.id} {...cloud} />
+            return <CloudItem key={cloud.id} {...cloud} max={max} min={min} />
         })
+    }
+
+    getSentimentScores(clouds) {
+        return clouds.map((cloud) => (cloud.sentimentScore));
     }
 
     render() {
