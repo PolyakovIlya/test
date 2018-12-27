@@ -10,27 +10,13 @@ const LinkBtn = styled(Link)`
     text-decoration: none;
 `;
 
-const Badge = styled.span`
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 13px;
-    background-color: #e44337;
-    color: #fff;
-    border-radius: 50%;
-    padding: 1px 2px;
-    min-width: 12px;
-    text-align: center;
-`;
-
 const List = styled.li`
     list-style: none;
     padding: 5px 10px;
     color: #5577cc;
-    background-color: #ececec;
     border-radius: 5px;
     vertical-align: middle;
-    font-size: ${props => props.size}px;
+    font-size: ${props => props.size}pt;
 `;
 
 class CloudItem extends Component {
@@ -38,13 +24,25 @@ class CloudItem extends Component {
         super(props)
     }
 
+    calculateTagSize(score) {
+        const tIndex = score,
+              min = 1,
+              max = 895,
+              fMin = 12,
+              fMax = 100;
+
+        return tIndex === min ? fMin : (tIndex / max) * (fMax - fMin) + fMin;
+    }
+
     render() {
-        const {id, label, sentimentScore, volume } = this.props;
+        const {id, label, sentimentScore } = this.props;
+        const size = this.calculateTagSize(sentimentScore)
+
+        console.log('size', size);
 
         return(
             <LinkBtn to={`/${id}`}>
-                <List size={sentimentScore}>{label}</List>
-                <Badge>{volume}</Badge>
+                <List size={size}>{label}</List>
             </LinkBtn>
         )
     }
