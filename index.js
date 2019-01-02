@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import rootReducer from './src/reducers'
 import {getAllClouds} from './src/actions'
 import cloudsData from './src/data'
@@ -12,8 +12,8 @@ const store = createStore(rootReducer);
 store.dispatch(getAllClouds(cloudsData));
 
 render(
-    <Router>
-        <App store={store}/>
-    </Router>,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 )

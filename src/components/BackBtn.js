@@ -1,8 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import styled from 'styled-components'
+import history from '../history';
 
-const LinkBtn = styled(Link)`
+const LinkBtn = styled.div`
     display: block;
     text-decoration: none;
 `;
@@ -18,7 +18,7 @@ const Btn = styled.button`
 
 const BackBtn = () => {
     return (
-        <LinkBtn to={`../`}>
+        <LinkBtn onClick={history.goBack}>
             <Btn>{`< Back`}</Btn>
         </LinkBtn>
     )
